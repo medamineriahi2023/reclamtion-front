@@ -1,5 +1,3 @@
-import {User} from "./user";
-import {Role} from "./Role";
 import {Image} from "./Image";
 
 export interface Comment {

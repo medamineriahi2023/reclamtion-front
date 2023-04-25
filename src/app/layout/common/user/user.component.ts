@@ -11,10 +11,9 @@ import {
 import { Router } from '@angular/router';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { Subject, takeUntil } from 'rxjs';
-import { User } from 'app/core/user/user.types';
-import { UserService } from 'app/core/user/user.service';
 import { Store } from '@ngrx/store';
 import {KeycloakService} from "keycloak-angular";
+import {UserService} from "../../../core/services/user/user.service";
 
 @Component({
     selector       : 'user',
@@ -30,7 +29,6 @@ export class UserComponent implements OnInit, OnDestroy
     /* eslint-enable @typescript-eslint/naming-convention */
     @Input() kcUser : any;
     @Input() showAvatar: boolean = true;
-    user: User;
 
 
 
@@ -97,17 +95,17 @@ export class UserComponent implements OnInit, OnDestroy
      */
     updateUserStatus(status: string): void
     {
-        // Return if user is not available
-        if ( !this.user )
-        {
-            return;
-        }
-
-        // Update the user
-        this._userService.update({
-            ...this.user,
-            status
-        }).subscribe();
+        // // Return if user is not available
+        // if ( !this.user )
+        // {
+        //     return;
+        // }
+        //
+        // // Update the user
+        // this._userService.update({
+        //     ...this.user,
+        //     status
+        // }).subscribe();
     }
 
     /**

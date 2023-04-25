@@ -1,7 +1,4 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
-import {UserContainerComponent} from "../../../components/user-container/user-container.component";
-import {GroupContainerComponent} from "../../../components/group-container/group-container.component";
-import {RoleContainerComponent} from "../../../components/role-container/role-container.component";
 
 @Component({
   selector: 'app-operations',
@@ -39,13 +36,13 @@ export class OperationsComponent {
     // show component
     detectComp(comp: any):void {
         if (comp === 'Users') {
-            this.comp = UserContainerComponent;
+            // this.comp = UserContainerComponent;
         }
         if (comp === 'Groups') {
-            this.comp = GroupContainerComponent;
+            // this.comp = GroupContainerComponent;
         }
         if (comp === 'Roles') {
-            this.comp = RoleContainerComponent;
+            // this.comp = RoleContainerComponent;
         }
         this.selectedPanel = comp;
     }

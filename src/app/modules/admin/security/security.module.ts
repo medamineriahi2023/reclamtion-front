@@ -16,9 +16,6 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatTooltipModule} from "@angular/material/tooltip";
-import {GroupContainerModule} from "../../../components/group-container/group-container.module";
-import {UserContainerModule} from "../../../components/user-container/user-container.module";
-import {RoleContainerModule} from "../../../components/role-container/role-container.module";
 
 const securityRoutes: Route[] = [
     {path: '**', component: SecurityComponent},
@@ -46,9 +43,6 @@ const securityRoutes: Route[] = [
         MatTableModule,
         MatCheckboxModule,
         MatTooltipModule,
-        GroupContainerModule,
-        UserContainerModule,
-        RoleContainerModule
     ]
 })
 export class SecurityModule

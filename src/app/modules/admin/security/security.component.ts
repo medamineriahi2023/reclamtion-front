@@ -1,7 +1,4 @@
 import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {GroupContainerComponent} from "../../../components/group-container/group-container.component";
-import {UserContainerComponent} from "../../../components/user-container/user-container.component";
-import {RoleContainerComponent} from "../../../components/role-container/role-container.component";
 
 @Component({
   selector: 'app-security',
@@ -45,13 +42,12 @@ export class SecurityComponent  implements OnInit{
     // show component
     detectComp(comp: any):void {
         if (comp === 'Users') {
-            this.comp = UserContainerComponent;
         }
         if (comp === 'Groups') {
-            this.comp = GroupContainerComponent;
+            // this.comp = GroupContainerComponent;
         }
         if (comp === 'Roles') {
-            this.comp = RoleContainerComponent;
+            // this.comp = RoleContainerComponent;
         }
         this.selectedPanel = comp;
     }

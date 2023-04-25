@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {Group} from "../../models/Group";
 import {AddPostComponent} from "../modals/add-post/add-post.component";
 import {Status} from "../../models/Status";
 import {OperationsService} from "../../core/services/operations/operations.service";
@@ -31,18 +30,18 @@ export class ReclamationsContainerComponent {
     }
 
 
-    filterPredicate: (group: Group, filter: string) => boolean = (group: Group, filter: string): boolean => {
+    filterPredicate: (operation: Operation, filter: string) => boolean = (operation: Operation, filter: string): boolean => {
         const keys = ['name', 'kcUsers','roles'];
-        let dataStr = Object.keys(group as unknown as Record<string, any>).filter(key => keys.includes(key))
+        let dataStr = Object.keys(operation as unknown as Record<string, any>).filter(key => keys.includes(key))
             .reduce((currentTerm: string, key: string) => {
                 if (key === 'kcUsers') {
-                    return currentTerm + (group as unknown as Record<string, any>)[key].length + '◬';
+                    return currentTerm + (operation as unknown as Record<string, any>)[key].length + '◬';
                 }
                 if (key === 'roles') {
-                    const roleNames = (group as unknown as Record<string, any>)[key].map((role: any) => role.name);
+                    const roleNames = (operation as unknown as Record<string, any>)[key].map((role: any) => role.name);
                     return currentTerm + roleNames.join(',') + '◬';
                 }
-                return currentTerm + (group as unknown as Record<string, any>)[key] + '◬';
+                return currentTerm + (operation as unknown as Record<string, any>)[key] + '◬';
             }, '')
             .toLowerCase();
         const transformedFilter = filter.trim().toLowerCase();

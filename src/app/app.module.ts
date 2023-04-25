@@ -15,11 +15,6 @@ import {StoreModule} from '@ngrx/store';
 import {reducers} from './store/app.states';
 import {environment} from 'environments/environment.dev';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {EffectsModule} from '@ngrx/effects';
-import {UserEffects} from "./store/effects/user.effects";
-import {GroupEffects} from "./store/effects/group.effects";
-import {RoleEffects} from "./store/effects/role.effects";
-import {PermissionEffects} from "./store/effects/permission.effects";
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -38,7 +33,6 @@ const routerConfig: ExtraOptions = {
         FuseConfigModule.forRoot(appConfig),
         FuseMockApiModule.forRoot(mockApiServices),
         CoreModule,
-        EffectsModule.forRoot([ UserEffects, GroupEffects, RoleEffects, PermissionEffects]),
         LayoutModule,
         StoreModule.forRoot(reducers, {}),
         !environment.production ? StoreDevtoolsModule.instrument() : [],

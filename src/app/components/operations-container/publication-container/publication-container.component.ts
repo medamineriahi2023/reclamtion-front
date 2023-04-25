@@ -24,7 +24,7 @@ export class PublicationContainerComponent implements OnInit, OnChanges, AfterVi
     @Input() userId: string;
     numberOfLikes: number = 0;
     numberOfDislikes: number = 0;
-    public comments: Comment = {id: undefined, userId: '', content: '', images: [], creationDate: null, username: ''};
+    public comments: Comment = {id: undefined, userId: '', content: '', images: [], creationDate: null, userName: null};
     commentValue: string;
     public username: string;
 
@@ -45,7 +45,6 @@ export class PublicationContainerComponent implements OnInit, OnChanges, AfterVi
     }
     ngOnInit(): void {
         this.refreshLikes();
-        this.getUserById();
 
     }
 
@@ -64,24 +63,20 @@ export class PublicationContainerComponent implements OnInit, OnChanges, AfterVi
     }
 
     likeAnOperation(operationId: any ){
-        this.operationService.likeAnOperation(operationId, this.userId).subscribe(o=>{ this.publication = o ; this.refreshLikes();this.getUserById();});
+        this.operationService.likeAnOperation(operationId, this.userId).subscribe(o=>{ this.publication = o ; this.refreshLikes()});
 Comment
     }
 
     dislikeAnOperation(operationId: any ){
-        this.operationService.dislikeAnOperation(operationId, this.userId).subscribe(o=>{ this.publication = o ; this.refreshLikes();this.getUserById();});
+        this.operationService.dislikeAnOperation(operationId, this.userId).subscribe(o=>{ this.publication = o ; this.refreshLikes()});
 
     }
 
     comment(operationId: any ){
                 this.comments.userId = this.userId;
                 this.comments.content = this.commentValue;
-        this.operationService.comment(this.comments, operationId).subscribe(o=>{ this.publication = o ; this.refreshLikes();this.getUserById(); this.commentValue = ""});
+        this.operationService.comment(this.comments, operationId).subscribe(o=>{ this.publication = o ; this.refreshLikes(); this.commentValue = ""});
     }
 
 
-    getUserById(){
-        this.publication.comments.forEach(c =>this.userService.getUserName(c.userId).subscribe(e => {c.username = e["username"] ;}) )
-
-    }
 }

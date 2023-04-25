@@ -21,7 +21,7 @@
         <mat-list>
             <mat-list-item class="h-auto" *ngFor="let com of publication.comments">
                 <div >
-                    <p style="color: #1a78c3; font-size: 15px; font-weight: bold" >{{com.username}}</p>
+                    <p style="color: #1a78c3; font-size: 15px; font-weight: bold" >{{com.userName}}</p>
                     <p >{{com.content}}</p>
                     <p class="timestamp" >{{formatDate(com.creationDate)}}</p>
                 </div>

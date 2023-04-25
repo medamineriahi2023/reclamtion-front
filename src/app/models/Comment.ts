@@ -7,7 +7,7 @@ export interface Comment {
 
      content: string;
 
-     username: string;
+    userName: string;
 
 
      creationDate : Date;

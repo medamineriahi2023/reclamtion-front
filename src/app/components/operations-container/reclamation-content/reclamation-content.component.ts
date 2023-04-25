@@ -26,10 +26,13 @@ export class ReclamationContentComponent implements OnInit, OnChanges {
         }
     }
 
+
+
     ngOnInit(): void {
         this.isLoading = true;
         this.operationService.getAll().subscribe(o =>{ this.operations = o.filter(e => e.status.toString() === "RECLAMATION"); this.isLoading= false});
     }
+
 
 
 }

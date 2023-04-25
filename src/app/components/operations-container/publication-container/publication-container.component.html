@@ -1,0 +1,37 @@
+<mat-card class="card" [@fadeInUpAnimation]>
+    <mat-card-header>
+        <mat-card-title>{{publication.topic}}</mat-card-title>
+        <mat-card-subtitle>{{publication.description}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions align="end">
+        <p>{{numberOfLikes}}</p>
+        <button mat-icon-button (click)="likeAnOperation(publication.id)">
+            <mat-icon [color]="publication.liked? 'primary' : null">thumb_up</mat-icon>
+        </button>
+        <p>{{numberOfDislikes}}</p>
+        <button mat-icon-button (click)="dislikeAnOperation(publication.id)">
+            <mat-icon [color]="publication.disliked ? 'primary' : null">thumb_down</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon>share</mat-icon>
+        </button>
+    </mat-card-actions>
+    <mat-card-content>
+        <h3>Comments ({{publication.comments?.length}})</h3>
+        <mat-list>
+            <mat-list-item class="h-auto" *ngFor="let com of publication.comments">
+                <div >
+                    <p style="color: #1a78c3; font-size: 15px; font-weight: bold" >{{com.username}}</p>
+                    <p >{{com.content}}</p>
+                    <p class="timestamp" >{{formatDate(com.creationDate)}}</p>
+                </div>
+            </mat-list-item>
+        </mat-list>
+        <mat-form-field  style="width: 100%">
+            <textarea matInput placeholder="Add a comment" [(ngModel)]="commentValue"></textarea>
+            <button mat-icon-button (click)="comment(publication.id)">
+                <mat-icon>send</mat-icon>
+            </button>
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>

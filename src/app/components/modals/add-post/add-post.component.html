@@ -1,0 +1,83 @@
+<div class="flex flex-col flex-auto md:min-w-160 max-w-240 max-h-200">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg font-medium">{{title}}</div>
+        <button
+            mat-icon-button
+            (click)="close()"
+            [tabIndex]="-1">
+            <mat-icon
+                class="text-current"
+                [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+
+    <form [formGroup]="operationForm" class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto">
+
+        <!--fullname-->
+        <mat-form-field class="fuse-mat-dense ">
+            <mat-label class="text-md font-medium">Topic</mat-label>
+            <input type="topic" matInput required formControlName="topic">
+            <mat-error *ngIf="operationForm.controls.topic.invalid">
+                topic is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="fuse-mat-dense ">
+            <mat-label class="text-md font-medium">Description</mat-label>
+            <textarea type="description" matInput required formControlName="description"></textarea>
+            <mat-error *ngIf="operationForm.controls.description.invalid">
+                description is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field style="width: 100%;">
+            <mat-label>File matInput</mat-label>
+            <button mat-icon-button matPrefix (click)="f_input.click()">
+                <mat-icon>attach_file</mat-icon>
+            </button>
+            <input type="text" readonly matInput [value]="display"/>
+            <input
+                type="file"
+                hidden
+                multiple
+                #f_input
+                (change)="handleFileInputChange(f_input.files)"
+            />
+            <mat-error>this field is required</mat-error>
+        </mat-form-field>
+
+
+    </form>
+
+
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8
+  bg-gray-50 dark:bg-transparent">
+
+        <div class="flex items-center ml-auto mt-4 sm:mt-0">
+
+            <button class="ml-auto sm:ml-0"
+                    value="Cancel" mat-button
+                    color="warn"
+                    (click)="close()">
+                <mat-icon>cancel</mat-icon>
+                <span>Cancel</span>
+            </button>
+
+            <button [value]="operation"
+                    (click)="onSubmit()"
+                    mat-button
+                    [matTooltip]="operation"
+                    color="accent"
+                    class="ml-auto"
+                    [disabled]="!operationForm.valid">
+                <mat-icon svgIcon="feather:edit"></mat-icon>
+                <span>{{operation}}</span>
+            </button>
+
+        </div>
+    </div>
+
+</div>
+

@@ -25,12 +25,6 @@ export class SecurityComponent  implements OnInit{
                 description: 'Manage your users'
             },
             {
-                id: 'Groups',
-                icon: 'heroicons_outline:user-group',
-                title: 'Groups',
-                description: 'Manage your groups'
-            },
-            {
                 id: 'Roles',
                 icon: 'heroicons_outline:lock-closed',
                 title: 'Roles',
@@ -42,9 +36,6 @@ export class SecurityComponent  implements OnInit{
     // show component
     detectComp(comp: any):void {
         if (comp === 'Users') {
-        }
-        if (comp === 'Groups') {
-            // this.comp = GroupContainerComponent;
         }
         if (comp === 'Roles') {
             // this.comp = RoleContainerComponent;

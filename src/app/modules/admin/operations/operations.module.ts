@@ -5,6 +5,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {SharedModule} from "../../../shared/shared.module";
 import {Route, RouterModule} from "@angular/router";
 import {ReclamationsContainerModule} from "../../../components/operations-container/reclamations-container.module";
+import {SuggestionsContainerModule} from "../../../components/suggestions-container/suggestions-container.module";
 
 
 const reclamationsRoutes: Route[] = [
@@ -21,7 +22,8 @@ const reclamationsRoutes: Route[] = [
         CommonModule,
         MatIconModule,
         SharedModule,
-        ReclamationsContainerModule
+        ReclamationsContainerModule,
+        SuggestionsContainerModule
     ]
 })
 export class OperationsModule { }

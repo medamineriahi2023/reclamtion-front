@@ -36,12 +36,16 @@ export class AddPostComponent implements OnInit{
              this.title = "Add new Suggestion";
             this.operation = "Save";
         }else {
-            this.title = "Update user";
+            if (this.data.status == 0)
+            this.title = "Update Reclamation";
+            else
+                this.title = "Update Suggestion";
+
             this.operation = "Update";
         }
         this.operationForm = new FormGroup({
-                topic: new FormControl(this.data?.fix?.userName, [Validators.required]),
-                description: new FormControl(this.data?.fix?.firstName, [Validators.required])
+                topic: new FormControl(this.data?.publication?.topic, [Validators.required]),
+                description: new FormControl(this.data?.publication?.description, [Validators.required])
             }
         );
 
@@ -49,9 +53,6 @@ export class AddPostComponent implements OnInit{
     }
 
     ngOnInit(): void {
-        this.dialogRef.afterClosed().subscribe(() => {
-            this.closeModal.emit();
-        });
     }
 
 
@@ -60,13 +61,18 @@ export class AddPostComponent implements OnInit{
         this.operations.topic = this.operationForm.get('topic').value;
         this.operations.description = this.operationForm.get('description').value;
         this.operations.userId = this.userId;
-        for (let i =0 ; i< this.files.length ; i++){
+        for (let i =0 ; i< this.files?.length ; i++){
         let image : Image = {id : undefined,url : this.files.item(i).name}
         this.operations.images.push(image);
         }
-        this.operationService.save(this.operations).subscribe(s => console.log(s));
+        if (this.data.isNew){
+        this.operationService.save(this.operations).subscribe(s =>  {this.closeModal.emit(); this.close()});
+        }else {
+            this.operations.id = this.data.publication.id;
+            this.operationService.update(this.operations).subscribe(s =>  this.dialogRef.close(s));
 
-        this.close();
+        }
+
 
     }
 

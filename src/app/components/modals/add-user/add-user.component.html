@@ -1,0 +1,156 @@
+<div class="flex flex-col flex-auto md:min-w-160 max-w-240 max-h-200">
+
+    <!-- Header -->
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8 bg-primary text-on-primary">
+        <div class="text-lg font-medium">{{title}}</div>
+        <button
+            mat-icon-button
+            (click)="close()"
+            [tabIndex]="-1">
+            <mat-icon
+                class="text-current"
+                [svgIcon]="'heroicons_outline:x'"></mat-icon>
+        </button>
+    </div>
+
+    <form [formGroup]="userForm" class="flex flex-col flex-auto p-6 sm:p-8 overflow-y-auto">
+
+        <!--fullname-->
+        <mat-form-field class="fuse-mat-dense ">
+            <mat-label class="text-md font-medium">First name</mat-label>
+            <input type="firstName" matInput required formControlName="firstName">
+            <mat-error *ngIf="userForm.controls.firstName.invalid">
+                first name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="fuse-mat-dense ">
+            <mat-label class="text-md font-medium">Last name</mat-label>
+            <input type="lastName" matInput required formControlName="lastName">
+            <mat-error *ngIf="userForm.controls.lastName.invalid">
+                last name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="fuse-mat-dense w-full">
+            <mat-label class="text-md font-medium">Email</mat-label>
+            <input type="email" matInput required formControlName="email" placeholder="Ex. pat@example.com">
+
+            <mat-error *ngIf="userForm.controls.email.invalid && userForm.controls.email.errors.email">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="userForm.controls.email.invalid && userForm.controls.email.errors.required">
+                Email is <strong>required</strong>
+            </mat-error>
+
+        </mat-form-field>
+
+        <!--username-->
+        <mat-form-field class="fuse-mat-dense w-full">
+            <mat-label class="text-md font-medium">Username</mat-label>
+            <input type="userName" required matInput formControlName="userName">
+            <mat-error *ngIf="userForm.controls.userName.invalid">
+                username is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <div class="flex flex-row items-center justify-between" *ngIf="operation == 'Save'">
+
+            <!--password-->
+            <mat-form-field class="fuse-mat-dense w-full mr-2" >
+                <mat-label class="text-md font-medium">Password</mat-label>
+                <input required
+                       id="password"
+                       matInput
+                       type="password"
+                       formControlName="password"
+                       #passwordField>
+                <button
+                    mat-icon-button
+                    type="button"
+                    (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+                    matSuffix>
+                    <mat-icon
+                        class="icon-size-5"
+                        *ngIf="passwordField.type === 'password'"
+                        [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                    <mat-icon
+                        class="icon-size-5"
+                        *ngIf="passwordField.type === 'text'"
+                        [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                </button>
+                <mat-error *ngIf="userForm.controls.password.invalid">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <!--confirm password-->
+            <mat-form-field class="fuse-mat-dense w-full">
+                <mat-label class="text-md font-medium">Confirm Password</mat-label>
+                <input required
+                       id="confirmPassword"
+                       matInput
+                       type="password"
+                       formControlName="confirmPassword"
+                       #confirmPasswordField>
+                <button
+                    mat-icon-button
+                    type="button"
+                    (click)="confirmPasswordField.type === 'password' ? confirmPasswordField.type = 'text' : confirmPasswordField.type = 'password'"
+                    matSuffix>
+                    <mat-icon
+                        class="icon-size-5"
+                        *ngIf="confirmPasswordField.type === 'password'"
+                        [svgIcon]="'heroicons_solid:eye'"></mat-icon>
+                    <mat-icon
+                        class="icon-size-5"
+                        *ngIf="confirmPasswordField.type === 'text'"
+                        [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
+                </button>
+                <mat-error
+                    *ngIf="userForm.controls.confirmPassword.invalid && userForm.controls.confirmPassword.errors.required">
+                    confirm Password is <strong>required</strong>
+                </mat-error>
+                <mat-error
+                    *ngIf="this.userForm.controls.confirmPassword.invalid && this.userForm.controls.confirmPassword.errors.mustMatch">
+                    Password and Confirm Password must be match
+                </mat-error>
+            </mat-form-field>
+
+        </div>
+
+        <mat-checkbox [checked]="userForm.controls.active.value" formControlName="active"> is active
+        </mat-checkbox>
+
+    </form>
+
+
+    <div class="flex flex-0 items-center justify-between h-16 pr-3 sm:pr-5 pl-6 sm:pl-8
+  bg-gray-50 dark:bg-transparent">
+
+        <div class="flex items-center ml-auto mt-4 sm:mt-0">
+
+            <button class="ml-auto sm:ml-0"
+                    value="Cancel" mat-button
+                    color="warn"
+                    (click)="close()">
+                <mat-icon>cancel</mat-icon>
+                <span>Cancel</span>
+            </button>
+
+            <button [value]="operation"
+                    (click)="onSubmit()"
+                    mat-button
+                    [matTooltip]="operation"
+                    color="accent"
+                    class="ml-auto"
+                    [disabled]="!userForm.valid">
+                <mat-icon svgIcon="feather:edit"></mat-icon>
+                <span>{{operation}}</span>
+            </button>
+
+        </div>
+    </div>
+
+</div>
+

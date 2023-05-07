@@ -15,6 +15,12 @@ import {StoreModule} from '@ngrx/store';
 import {reducers} from './store/app.states';
 import {environment} from 'environments/environment.dev';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {MatIconModule} from "@angular/material/icon";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatInputModule} from "@angular/material/input";
+import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatButtonModule} from "@angular/material/button";
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -36,6 +42,12 @@ const routerConfig: ExtraOptions = {
         LayoutModule,
         StoreModule.forRoot(reducers, {}),
         !environment.production ? StoreDevtoolsModule.instrument() : [],
+        MatIconModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        MatCheckboxModule,
+        MatTooltipModule,
+        MatButtonModule,
     ],
     bootstrap   : [
         AppComponent

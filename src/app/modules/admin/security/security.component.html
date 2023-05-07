@@ -60,13 +60,10 @@
 
             </ng-container>
             <ng-container *ngIf="selectedPanel === 'Users'" main_body>
-                <user-container></user-container>
-            </ng-container>
-            <ng-container *ngIf="selectedPanel === 'Groups'" main_body>
-                <group-container></group-container>
+                <app-user-container></app-user-container>
             </ng-container>
             <ng-container *ngIf="selectedPanel === 'Roles'" main_body>
-                <role-container></role-container>
+                <app-role-container></app-role-container>
             </ng-container>
         </main-container>
 

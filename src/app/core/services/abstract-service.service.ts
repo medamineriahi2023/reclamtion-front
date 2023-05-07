@@ -21,5 +21,13 @@ export abstract class AbstractServiceService<T> {
         return this.http.get<T[]>(this.url);
     }
 
+    delete(operationId: any){
+        return this.http.delete<T[]>(this.url+`/${operationId}`);
+    }
+
+    update(operation: any){
+        return this.http.put<T[]>(this.url, operation);
+    }
+
 
 }

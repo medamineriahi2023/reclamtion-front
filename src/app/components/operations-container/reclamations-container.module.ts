@@ -15,6 +15,8 @@ import {AddPostComponent} from "../modals/add-post/add-post.component";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatSelectModule} from "@angular/material/select";
+import {MatMenuModule} from "@angular/material/menu";
+import {AvatarModule} from "ngx-avatar";
 
 @NgModule({
     declarations: [
@@ -24,7 +26,8 @@ import {MatSelectModule} from "@angular/material/select";
         AddPostComponent
     ],
     exports: [
-        ReclamationsContainerComponent
+        ReclamationsContainerComponent,
+        PublicationContainerComponent
     ],
     imports: [
         CommonModule,
@@ -38,7 +41,9 @@ import {MatSelectModule} from "@angular/material/select";
         SkeletonModule,
         MatTooltipModule,
         MatCheckboxModule,
-        MatSelectModule
+        MatSelectModule,
+        MatMenuModule,
+        AvatarModule
     ]
 })
 export class ReclamationsContainerModule { }

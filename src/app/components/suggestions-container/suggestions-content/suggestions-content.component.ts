@@ -1,13 +1,13 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {OperationsService} from "../../../core/services/operations/operations.service";
 import {Operation} from "../../../models/Operation";
+import {OperationsService} from "../../../core/services/operations/operations.service";
 
 @Component({
-    selector: 'reclamation-content',
-    templateUrl: './reclamation-content.component.html',
-    styleUrls: ['./reclamation-content.component.scss']
+  selector: 'suggestions-content',
+  templateUrl: './suggestions-content.component.html',
+  styleUrls: ['./suggestions-content.component.scss']
 })
-export class ReclamationContentComponent implements OnInit, OnChanges {
+export class SuggestionsContentComponent implements OnChanges,OnInit{
     isLoading: boolean;
     operations: Operation[];
     @Input() op: Operation[];
@@ -35,6 +35,6 @@ export class ReclamationContentComponent implements OnInit, OnChanges {
 
 
     refresh() {
-        this.operationService.getAll().subscribe(o =>{ this.operations = o.filter(e => e.status.toString() === "RECLAMATION"); this.isLoading= false});
+        this.operationService.getAll().subscribe(o =>{ this.operations = o.filter(e => e.status.toString() === "SUGGESTION"); this.isLoading= false});
     }
 }

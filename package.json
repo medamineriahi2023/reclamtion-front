@@ -30,6 +30,7 @@
         "@ngrx/store": "^15.3.0",
         "@ngrx/store-devtools": "^15.3.0",
         "apexcharts": "3.36.3",
+        "chartist": "^1.3.0",
         "cloudinary": "^1.36.1",
         "crypto-js": "3.3.0",
         "date-fns": "^2.29.3",
@@ -48,7 +49,10 @@
         "rxjs": "7.8.0",
         "sweetalert2": "^11.7.3",
         "tslib": "2.4.1",
-        "zone.js": "0.12.0"
+        "zone.js": "0.12.0",
+        "bootstrap": "4.6.1",
+        "bootstrap-material-design": "4.1.3",
+        "popper.js": "1.16.1"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "15.1.2",

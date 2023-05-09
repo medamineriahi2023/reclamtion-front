@@ -46,6 +46,7 @@ export const appRoutes: Route[] = [
         children: [
             {path: 'security', loadChildren: () => import('app/modules/admin/security/security.module').then(m => m.SecurityModule)},
             {path: 'operations', loadChildren: () => import('app/modules/admin/operations/operations.module').then(m => m.OperationsModule)},
+            {path: 'dashboard', loadChildren: () => import('app/modules/admin/dashboard/dashboard.module').then(m => m.DashboardModule)},
         ]
     }
 ];

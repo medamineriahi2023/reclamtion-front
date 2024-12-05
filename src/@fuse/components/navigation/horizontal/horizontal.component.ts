@@ -4,7 +4,6 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseNavigationItem } from '@fuse/components/navigation/navigation.types';
 import { FuseNavigationService } from '@fuse/components/navigation/navigation.service';
 import { FuseUtilsService } from '@fuse/services/utils/utils.service';
-import {KeycloakService} from "keycloak-angular";
 
 @Component({
     selector       : 'fuse-horizontal-navigation',
@@ -32,7 +31,6 @@ export class FuseHorizontalNavigationComponent implements OnChanges, OnInit, OnD
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseNavigationService: FuseNavigationService,
         private _fuseUtilsService: FuseUtilsService,
-        private _keycloakService:KeycloakService
     )
     {
     }
@@ -70,7 +68,7 @@ export class FuseHorizontalNavigationComponent implements OnChanges, OnInit, OnD
         // Register the navigation component
         this._fuseNavigationService.registerComponent(this.name, this);
 
-        if (this._keycloakService.isUserInRole('superAdmin')) {
+
             let adminData: FuseNavigationItem;
             adminData = {
                 id   : 'dashboard',
@@ -80,7 +78,6 @@ export class FuseHorizontalNavigationComponent implements OnChanges, OnInit, OnD
                 link : '/dashboard'
             }
             this.navigation.push(adminData);
-        }
     }
 
     /**

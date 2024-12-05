@@ -8,6 +8,8 @@ import {ConfirmActionDialogComponent} from "./dialog/confirm-action-dialog/confi
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
+import {MatButtonModule} from "@angular/material/button";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
     imports: [
@@ -17,7 +19,9 @@ import {MatIconModule} from "@angular/material/icon";
         MatInputModule,
         MatDialogModule,
         MatListModule,
-        MatIconModule
+        MatIconModule,
+        MatButtonModule,
+        MatTooltipModule
     ],
     exports: [
         CommonModule,

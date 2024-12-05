@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { Subject, takeUntil } from 'rxjs';
 import { Store } from '@ngrx/store';
-import {KeycloakService} from "keycloak-angular";
 import {UserService} from "../../../core/services/user/user.service";
 
 @Component({
@@ -43,7 +42,6 @@ export class UserComponent implements OnInit, OnDestroy
         private _userService: UserService,
         private store: Store,
 
-        private keycloak : KeycloakService
     )
     {
 
@@ -114,6 +112,5 @@ export class UserComponent implements OnInit, OnDestroy
     signOut(): void
     {
         // this.store.dispatch(AuthActions.logoutRequest())
-        this.keycloak.logout("http://localhost:4200/").then(r => console.log(r));
     }
 }

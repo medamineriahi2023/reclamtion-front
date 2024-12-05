@@ -23,4 +23,12 @@ export class UserService extends AbstractServiceService<User>{
     getRoles(): Observable<Role[]>{
         return this.http.get<Role[]>(this.url + `/roles` );
     }
+
+    resetPassword(data: any, password: any) {
+
+    }
+
+    assignRolesToUser(userId: string, rolesId: any[]): Observable<any> {
+        return null;
+    }
 }

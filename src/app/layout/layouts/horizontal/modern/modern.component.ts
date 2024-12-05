@@ -6,7 +6,6 @@ import { FuseNavigationService, FuseVerticalNavigationComponent } from '@fuse/co
 import { Navigation } from 'app/core/navigation/navigation.types';
 import { NavigationService } from 'app/core/navigation/navigation.service';
 import { Store } from '@ngrx/store';
-import {KeycloakService} from "keycloak-angular";
 
 @Component({
     selector     : 'modern-layout',
@@ -29,7 +28,6 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
         private _navigationService: NavigationService,
         private _fuseMediaWatcherService: FuseMediaWatcherService,
         private _fuseNavigationService: FuseNavigationService,
-        private keycloak:KeycloakService
     )
     {
     }
@@ -55,7 +53,6 @@ export class ModernLayoutComponent implements OnInit, OnDestroy
      */
     ngOnInit(): void
     {
-        this.keycloak.loadUserProfile().then(e => {this.kcUser =e;});
         // Subscribe to navigation data
         this._navigationService.navigation$
             .pipe(takeUntil(this._unsubscribeAll))
